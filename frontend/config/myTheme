@@ -1,0 +1,11 @@
+import colors from "./colors";
+import defaultStyles from "../config/defaultStyles";
+
+const myTheme={
+    ...defaultTheme,
+    colors:{
+        ...defaultTheme.colors,
+        primary:colors.primary,
+        backgroud:colors.white
+    }
+}

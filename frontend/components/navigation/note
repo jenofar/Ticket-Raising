@@ -1,0 +1,122 @@
+import React, { useState,useEffect } from "react";
+import { Image,Switch ,StyleSheet,Button, Alert,View, Text} from 'react-native';
+import Screen from "./screens/Screen";
+// import * as Permission from 'expo-permissions'
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import ImageInput from "./components/ImageInput";
+import ImageInputList from "./components/ImageInputList";
+import { MaterialCommunityIcons,Ionicons } from "@expo/vector-icons";
+
+const Stack= createNativeStackNavigator();
+const Tab= createBottomTabNavigator();
+
+function Home() {
+  
+  return(
+    <View style={{flex:1, justifyContent:"center",alignItems:"center"}}>
+    <Text>Home</Text>
+    </View>
+  )
+}
+function SettingScreen() {
+  
+  return(
+    <View style={{flex:1, justifyContent:"center",alignItems:"center"}}>
+    <Text>SettingScreen</Text>
+    </View>
+  )
+}
+
+const TabNavigator=()=>(
+  <NavigationContainer>
+  <Tab.Navigator 
+  tabBarOptions={{
+    activeBackgroundColor:"tomato",
+    activeTintColor:"white",
+    inactiveBackgroundColor:"#eee",
+    inactiveTintColor:"black"
+  }}
+  >
+    <Tab.Screen name="home" component={Home} options={{tabBarIcon:({size,color})=>(<MaterialCommunityIcons size={size} color={color} name="home" />)}}/>
+    {/* <Tab.Screen name="settings" component={SettingScreen} options={{tabBarIcon:({size,color})=>(<Ionicons size={size} name="settings" color={color} />)}}/> */}
+    <Tab.Screen name="stack" component={StackNavigator} options={{tabBarIcon:({size,color})=>(<MaterialCommunityIcons size={size} color={color} name="home" />)}}/>
+
+  </Tab.Navigator>
+  </NavigationContainer>
+)
+
+
+
+
+const Product=()=>{
+  const navigation=useNavigation();
+  // const data=[{
+  //   name:"jasper",
+  //   id:1
+  // }]
+  return(
+    <Screen>
+      <Text>Product Screen</Text>
+      <Button title="press " onPress={()=>{navigation.push("productdetails",{id:1})}}></Button>
+    </Screen>
+  )
+}
+const Productdetails=({route})=>{
+  return(
+    <Screen>
+      <Text>Productdetails SCreen,{route.params.id}</Text>
+    </Screen>
+  )
+}
+const StackNavigator = () => {
+  return (
+    // <NavigationContainer>
+      <Stack.Navigator 
+      initialRouteName="Product"
+      screenOptions={{headTintColor:"white",
+      headerStyle:{backgroundColor:"dodgerblue"}}}>
+
+        <Stack.Screen name="product" component={Product}
+        options={{headerTintColor:"white",headerStyle:{backgroundColor:"brown"}}}></Stack.Screen>
+        <Stack.Screen name="productdetails" component={Productdetails} 
+        options={({route})=>({title:route.params.id})} ></Stack.Screen>
+      </Stack.Navigator>
+    // </NavigationContainer>
+  );
+}
+
+
+
+
+export default function App() {
+
+
+
+
+  return (
+    <>
+     <View style={styles.container} >
+     <Screen>
+{/* <StackNavigator/> */}
+<TabNavigator/>
+{/* <ImageInput/> */}
+{/* <ImageInputList/> */}
+     </Screen>
+        
+    </View>
+    </>
+    
+  )
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex:1, 
+    padding:2,
+    marginTop:40,
+  }
+});
+
+
