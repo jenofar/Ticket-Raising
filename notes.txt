@@ -1,0 +1,141 @@
+react native 
+
+a fremework for building native apps using js 
+
+a fremework that relies on React core:
+  supportd on ios/android
+
+React: js library/ not framework for creting UI
+
+ReactDOM: is used to render in the browser
+ReactNative: allows us to react components into native components
+
+cli: common language interface
+expo CLI: third party/testing tool= expo 1 folder
+react native CLI =android and ios 2 folders
+
+expo: which hides lit of complexity things to us
+
+/g-> global
+
+npm i -g expo-cli
+
+expo init firstproject 
+
+metrobundler => after bundling all fils and folders into single file
+
+function must be in caps not in small
+
+React component must start with caps
+
+View is similar to div tag in html 
+it is a parent container which have something
+
+delete logs after development
+
+debugging:
+mobile, vs code, refreshing reactjs option via developer tools (chrome dev tools)
+
+core components and APIs (buid in components)
+View 
+    similar to div, a parent tag
+Text 
+    touchable clikable event=> onPress 
+    numberOfLines
+Image 
+   image doesnt have onpress event so we can use touchable
+   fadeduration
+   loadingindicator source
+   resizemode
+   fadeduration
+  "https://picsum.photos/200"   
+
+Button 
+    <Button title='' '' color=' ' />
+    Alert.alert( 'title of the string', 'message',[{text:'yes',onPress:()=>{}}])
+
+Touchhobbies 
+Alert 
+
+SafeAreaView => used for margin purpose,, also a view componenet, not working properly on android
+flex is 1=> full screen, 
+
+touchable=>it is a   touchableOpacity
+touchablewithoutfeedback
+touchablenativefeedback
+
+
+stylesheet should in alphabetic order
+add multiple styles in one => style={[styles.text,styles.sty]}
+
+platform specific: 
+
+padding: platform.Os ='android'?20:0
+
+layout:
+density independent pixels => dip
+resizemode
+
+orientation-> default, portairt, landscape 
+
+npmi @react -native-community/hooks
+use Dimentions
+use device orientation
+flex direction row  
+  row->alignItems primary
+  coloum-> justifycontents is primary
+
+
+border
+
+customText.js
+class->statefull component
+function->stateless component
+
+import React from 'react'
+import {} from 'react-native'
+
+const customText=()=>{
+return(
+
+)}
+
+materialCommunityIcons:
+import { StatusBar } from 'expo-status-bar';
+import { Alert, Button, Dimensions, Image, Platform, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import CustomText from './CustomText';
+import HomeScreen from './HomeScreen';
+import {} from 'react-native-vector-icons'
+import {MaterialCommunityIcons} from '@expo/vector-icons'
+
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <MaterialCommunityIcons size={100} name={'email'} color={'blue'}></MaterialCommunityIcons>
+     <HomeScreen></HomeScreen>
+    </View>
+    
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'pink',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    
+  },
+  view1:{
+    color:'red'
+  }
+});
+
+
+
+
+
+
+
